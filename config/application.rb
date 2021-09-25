@@ -21,6 +21,8 @@ Bundler.require(*Rails.groups)
 
 module TinyUrl
   class Application < Rails::Application
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
     config.autoload_paths << Rails.root.join('lib')
 
     # Initialize configuration defaults for originally generated Rails version.
