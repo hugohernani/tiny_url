@@ -1,7 +1,7 @@
 module Links
   class StatisticsController < ApplicationController
     def show
-      link
+      @link_presenter = LinkPresenter.new(link: link)
     end
 
     private

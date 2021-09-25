@@ -1,9 +1,7 @@
 <section class="py-5 text-center">
   <div class="card">
     <div class="card-header">
-      <%= link_to @link.url, target: '_blank', class: 'btn btn-info' do %>
-        <%= @link.short_url %>
-      <% end %>
+      <%= @link_presenter.info_header %>
     </div>
     <div class="card-body">
       <table class="table table-hover">
