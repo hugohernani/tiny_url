@@ -24,7 +24,7 @@ RSpec.describe 'Links', type: :request do
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       let(:invalid_link_params) do
         {
           link: {
@@ -43,6 +43,20 @@ RSpec.describe 'Links', type: :request do
 
   describe 'GET /show' do
     let(:link){ create(:link) }
+
+    it 'adds visitor into found link object' do
+      expect do
+        get "/#{link.short_url}"
+      end.to change{ link.reload.visitors.count }.by(1)
+    end
+
+    it 'saves visitor request ip into Visitor object' do
+      mock_ip = '192.0.0.12'
+      get "/#{link.short_url}", params: {}, env: { 'REMOTE_ADDR' => mock_ip }
+
+      visitor = Visitor.includes(:link).find_by(links: { short_url: link.short_url })
+      expect(visitor.request_ip).to eq mock_ip
+    end
 
     it 'returns http redirection' do
       get "/#{link.short_url}"

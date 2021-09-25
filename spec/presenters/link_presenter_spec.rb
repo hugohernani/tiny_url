@@ -11,7 +11,3 @@ describe LinkPresenter do
     end
   end
 end
-
-class MockedViewContext
-  include Rails.application.routes.url_helpers
-end

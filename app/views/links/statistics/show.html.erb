@@ -12,10 +12,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>192.168.0.1</td>
-            <td>10</td>
-          </tr>
+          <%= decorate_visitors(@link_presenter.visitors) do |visitor_presenter| %>
+            <%= visitor_presenter.row_column %>
+          <% end %>
         </tbody>
       </table>
 

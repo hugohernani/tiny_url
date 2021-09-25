@@ -10,6 +10,7 @@ class LinksController < ApplicationController
   end
 
   def show
+    Link.increase_visit(short_url: link.short_url, request_ip: request.ip)
     redirect_to link.url
   end
 
