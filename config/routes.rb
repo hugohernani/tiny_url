@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :links, path: '', param: 'short_url', only: [:create, :show]
+  resources :links, path: '', param: 'short_url', only: %i[create show]
 end
