@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: tiny_url
+      POSTGRES_PASSWORD: tiny_url
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  web:
+    command: rails server -b 0.0.0.0
+    build: .
+    environment:
+      DATABASE_URL: db
+      POSTGRES_HOST: db
+      POSTGRES_USER: tiny_url
+      POSTGRES_PASSWORD: tiny_url
+    volumes:
+      - .:/myapp
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
