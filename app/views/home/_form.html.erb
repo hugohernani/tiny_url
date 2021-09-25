@@ -1,0 +1,13 @@
+<%= form_with model: @link, url: links_url do |form| %>
+
+  <%= render 'layouts/errors', resource: @link %>
+
+  <div class="form-group">
+    <%= form.label :url, 'URL' %>
+    <%= form.text_field :url, type: 'url', placeholder: "https://example.com", pattern: 'https://.*', required: true %>
+  </div>
+
+  <br />
+
+  <%= form.submit %>
+<% end %>
