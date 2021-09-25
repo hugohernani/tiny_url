@@ -3,7 +3,7 @@ class LinksController < ApplicationController
     @form = LinkForm.new(link_params)
     if @form.valid?
       link = Link.shorten(url: @form.url)
-      redirect_to info_link_path(short_url: link.short_url)
+      redirect_to info_link_path(short_url: link.short_url), success: t('.success')
     else
       render template: 'home/new', status: :unprocessable_entity
     end
@@ -17,7 +17,7 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:link).permit(:url)
+    params.require(:link_form).permit(:url)
   end
 
   def link

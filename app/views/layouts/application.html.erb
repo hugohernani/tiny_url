@@ -13,7 +13,10 @@
 
   <body>
     <main class='container'>
-      <%= yield %>      
+      <div class="flash-container">
+        <%= render 'layouts/flash_messages'%>
+      </div>
+      <%= yield %>
     </main>
   </body>
 </html>
