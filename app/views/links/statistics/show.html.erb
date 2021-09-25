@@ -1,0 +1,26 @@
+<section class="py-5 text-center">
+  <div class="card">
+    <div class="card-header">
+      <%= link_to @link.url, target: '_blank', class: 'btn btn-info' do %>
+        <%= @link.short_url %>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Ip Address</th>
+            <th>Visits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>192.168.0.1</td>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</section>
