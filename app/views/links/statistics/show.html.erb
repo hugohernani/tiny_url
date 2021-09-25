@@ -12,8 +12,8 @@
           </tr>
         </thead>
         <tbody>
-          <% decorate_visitors(@link_presenter.visitors) do |visitor_presenter| %>
-            <%= visitor_presenter.row_column %>
+          <% decorate_visitors(@link_presenter.visitors).each do |visitor_presenter| %>
+            <%= visitor_presenter.column_row %>
           <% end %>
         </tbody>
       </table>
