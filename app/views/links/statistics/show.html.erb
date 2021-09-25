@@ -7,12 +7,12 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>Ip Address</th>
-            <th>Visits</th>
+            <th>Visitor Ip Address</th>
+            <th>Visits Count</th>
           </tr>
         </thead>
         <tbody>
-          <%= decorate_visitors(@link_presenter.visitors) do |visitor_presenter| %>
+          <% decorate_visitors(@link_presenter.visitors) do |visitor_presenter| %>
             <%= visitor_presenter.row_column %>
           <% end %>
         </tbody>
