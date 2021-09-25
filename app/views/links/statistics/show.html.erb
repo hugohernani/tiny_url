@@ -1,0 +1,23 @@
+<section class="py-5 text-center">
+  <div class="card">
+    <div class="card-header">
+      <%= @link_presenter.info_header %>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Visitor Ip Address</th>
+            <th>Visits Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% decorate_visitors(@link_presenter.visitors).each do |visitor_presenter| %>
+            <%= visitor_presenter.column_row %>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</section>
