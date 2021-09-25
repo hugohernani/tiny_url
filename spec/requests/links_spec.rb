@@ -5,7 +5,7 @@ RSpec.describe 'Links', type: :request do
     context 'with valid params' do
       let(:link_params) do
         {
-          link: {
+          link_form: {
             url: Faker::Internet.url
           }
         }
@@ -27,7 +27,7 @@ RSpec.describe 'Links', type: :request do
     context 'with invalid params' do
       let(:invalid_link_params) do
         {
-          link: {
+          link_form: {
             url: 'invalid-url.com'
           }
         }
