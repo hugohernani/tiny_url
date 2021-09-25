@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def new
-    @link = Link.new
+    @form = LinkForm.new
   end
 end

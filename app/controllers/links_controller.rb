@@ -1,6 +1,12 @@
 class LinksController < ApplicationController
   def create
-    Link.create(link_params)
+    @form = LinkForm.new(link_params)
+    if @form.valid?
+      link = Link.shorten(url: @form.url)
+      redirect_to info_link_path(short_url: link.short_url)
+    else
+      render template: 'home/new', status: :unprocessable_entity
+    end
   end
 
   def show

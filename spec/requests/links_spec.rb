@@ -2,24 +2,42 @@ require 'rails_helper'
 
 RSpec.describe 'Links', type: :request do
   describe 'POST /create' do
-    let(:link_params) do
-      {
-        link: {
-          url: Faker::Internet.url
+    context 'with valid params' do
+      let(:link_params) do
+        {
+          link: {
+            url: Faker::Internet.url
+          }
         }
-      }
-    end
+      end
 
-    it 'returns http success' do
-      post '/', params: link_params
-
-      expect(response).to have_http_status(:success)
-    end
-
-    it 'creates a Link object in database' do
-      expect do
+      it 'returns http redirect' do
         post '/', params: link_params
-      end.to change(Link, :count)
+
+        expect(response).to have_http_status(:redirect)
+      end
+
+      it 'creates a Link object in database' do
+        expect do
+          post '/', params: link_params
+        end.to change(Link, :count)
+      end
+    end
+
+    context "with invalid params" do
+      let(:invalid_link_params) do
+        {
+          link: {
+            url: 'invalid-url.com'
+          }
+        }
+      end
+
+      it 'returns http 422 status' do
+        post '/', params: invalid_link_params
+
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
   end
 
