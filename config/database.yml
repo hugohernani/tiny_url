@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV.fetch('POSTGRES_HOST'){ "/var/run/postgresql" } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("POSTGRES_USER"){ "tiny_url" } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD"){ "tiny_url" } %>
+
+development:
+  <<: *default
+  database: tiny_url_development
+
+test:
+  <<: *default
+  database: tiny_url_test
+
+production:
+  <<: *default
+  database: tiny_url_production
+  username: <%= ENV.fetch("POSTGRES_USER", "tiny_url") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "tiny_url") %>
